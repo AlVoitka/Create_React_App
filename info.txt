@@ -28,5 +28,101 @@ npm start
 должна открыться страница в хроме с версткой из файла app.js что в папке src.
 
 
+
+
 ///////////// 87 /////////////
 
+Удалаю ненужное приложение в файле index.js. Это основной файл импортирующий в себя сбору и библиотеку
+
+import reportWebVitals from './reportWebVitals';
+reportWebVitals();
+
+
+Ниже код по запуску библиотеки реакт-дом с методом .render и в рендер передаются 2 аргумента:
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+Первый аргумент, то что я рендерю на страницу:
+
+<React.StrictMode>
+    <App />
+  </React.StrictMode>,
+
+  само приложение
+
+  Второй аогумент:  во что я помещаю :
+
+  document.getElementById('root')
+
+('root') -  в папке public ест ьфайл index.html и в нем подключен главный див с id 'root' - куда и будет
+помещаться приложение (реакт). Те буду вставлять все что сдклаю в реакте в этот блок. Именно дом-реак отвечает за взаимодействие 
+с дом- деревом.
+
+
+Также можно удалить файлы которые не будут использоваться:
+к примеру setupTest.js И reportWebVitals.js + App.test.js
+
+1. Создам переменную 
+
+const elem = <h2>Hi, Alex!</h2>;
+
+как видно тут использован смесь синтаксиса js и HTML  вместе - это и есть JSX. Это и есть основная прелесть JSX.
+Можно прописать и как выглядит элемент и как он себя ведёт.
+
+размещаю эту переменную в мой основной див:
+
+ReactDOM.render(
+  elem,
+  document.getElementById('root')
+);
+
+теперь на стронице появился elem который отрендорился на странице ( те появился)
+
+2. Но так же тут можно использовать и основной синтаксис JS:
+
+const hi = React.createElement;
+
+React.createElement - реакт как класс с методом createElement
+и в эту конструкцию нужно передать 3 аргумента:
+('h2', {className: 'item'}, 'Hi, world!')
+
+'h2'- название элемента в верстке
+{className: 'item'} - так я задаю класс рандомный класс который создастся 
+'Hi, world!'  -   содержимое тега.
+
+const hi = React.createElement('h2', {className: 'item'}, 'Hi, world!');
+
+
+3. Импортировать библиотеку реакт в каждый файл js уже не нужно на последних версиях
+
+import React from 'react';
+
+но в старых проектах именно так и делали.
+
+4. в синтаксисе JSX  должен быть ттлько один корневой элемент:
+он идет как аргумент для создания
+
+const elem = (
+    <div>
+      <h2>Hello</h2>
+      <input type="text"/>
+      <button/>
+    </div>
+);
+
+5. Синтаксис JSX:
+
+const text = 'World';
+
+const elem = (
+    <div>
+      <h2>Hello {text}</h2>
+      <input type="text"/>
+      <button/>
+      <button>click</button>
+    </div>
+);
