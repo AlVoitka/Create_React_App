@@ -1,3 +1,12 @@
+Git 
+1. git add . 
+2. git commit -m"..."
+3. git push -u react master
+
+
+
+
+
 ///////////// 86 //////////
 
 Для того чтобы начать проект и подключить к нему NPM-пакеты нужно установить Node.js версию не ниже 14 для работы с реактом.
@@ -8,7 +17,7 @@ npm init
 
 может просить апгрейда версии, лучше сделать
 
-2. Теперь добавляю пакет CRA (сборка сля работы в с реактом)
+2. Теперь добавляю пакет CRA (сборка для работы в с реактом)
 
 npx create-react-app my-app
 
@@ -126,3 +135,103 @@ const elem = (
       <button>click</button>
     </div>
 );
+
+
+
+/////////////// 88  /////////////////
+
+App - с большой буква значит, что это компанент
+
+ Создам несколько своих элементов и размещу их на странице, работаю в файле App.js
+
+1. Создаю простейший реакт-компанент Header:
+
+const Header = () => {
+  return <h2>Hello!</h2>
+}
+
+и теперь размещу его на странице
+
+const Header = () => {
+  return <h2>Hello!</h2>
+}
+
+function App() {
+  return (
+    <div className="App">
+      <Header/>
+    </div>
+  );
+}
+
+2. Создаю еще один компанент Field :
+
+const Field = () => {
+  return <input placehalder="Вводите" type="text"/>
+}
+
+и так же создам компанент Btn в виде обычной функции:
+
+function Btn() {
+  return <button/>
+}
+
+3. И теперь выведу их на страницу:
+
+const Header = () => {
+  return <h2>Hello!</h2>
+}
+
+const Field = () => {
+  return <input placeholder="Вводите" type="text"/>
+}
+
+function Btn() {
+  return <button/>
+}
+
+function App() {
+  return (
+    <div className="App">
+      <Header/>
+      <Field/>
+      <Btn/>
+    </div>
+  );
+}
+
+export default App;
+
+4. Усложняю компанент Btm:
+
+function Btn() {
+  const text ='Log in';
+  return <button>{text}</button>
+}
+
+
+/////////////// 91  ///////////////
+Свойства компанентов
+
+1. Создам компонент WhoAmI
+который выступает как заготовка для многократного дальнейшего использования
+
+function WhoAmI (props) {
+  return (
+    <div>
+      <h1>My name is {props.name}, surname - {props.surname}</h1>
+      <a href={props.link}>My profile</a>
+    </div>
+  )
+}
+
+props -(реквезиты) аргумент который я задам в виде объекта в функции App:
+
+function App() {
+  return (
+    <div className="App">
+      <WhoAmI name="Alex" surname="Voitka" link="pumba.com"/>
+      <WhoAmI name="John" surname="Rembo" link="pumba-1.com"/>
+    </div>
+  );
+}
